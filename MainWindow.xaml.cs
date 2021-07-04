@@ -83,8 +83,8 @@ namespace gp7ts
         if (dur is < 0.125 or > 128.0)
           return;
 
-        if ((i = Array.IndexOf(bd, dur)) == -1)
-          i = ~Array.BinarySearch(bd, dur);
+        if ((i = Array.BinarySearch(bd, dur)) < 0)
+          i = ~i;
 
         nums = times[i][last == bd[i] && times[i].Length > ++j && pos == cpos ? j : j = 0].Split('.');
         last = bd[i];
