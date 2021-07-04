@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows;
 
 namespace gp7ts
@@ -13,6 +8,11 @@ namespace gp7ts
   /// </summary>
   public partial class App : Application
   {
-
+    protected override void OnStartup(StartupEventArgs e)
+    {
+      base.OnStartup(e);
+      if (Process.GetProcessesByName("gp7ts").Length > 1)
+        Shutdown();
+    }
   }
 }
