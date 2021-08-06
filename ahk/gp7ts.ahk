@@ -14,12 +14,12 @@ return
 
 #IfWinActive ahk_exe GuitarPro7.exe
 `::
-	WinGetPos,,, W,, A
-	VarSetCapacity(point, 8)
-	NumPut(W / 2 - 60, &point, 0, "Int")
-	NumPut(50, &point, 4, "Int")
-	DllCall("user32\ClientToScreen", Ptr, WinExist("A"), Ptr, &point)
-	X := NumGet(&point, 0, "Int"), Y = NumGet(&point, 4, "Int")
+  WinGetPos,,, W,, A
+  VarSetCapacity(point, 8)
+  NumPut(W / 2 - 60, &point, 0, "Int")
+  NumPut(50, &point, 4, "Int")
+  DllCall("user32\ClientToScreen", Ptr, WinExist("A"), Ptr, &point)
+  X := NumGet(&point, 0, "Int"), Y = NumGet(&point, 4, "Int")
 
   cpos := e.(u.ElementFromPoint(X - 90 | Y << 32)).CurrentName()
   dur := strsplit(e.(u.ElementFromPoint(X | Y << 32)).CurrentName(), ":")[1]
