@@ -8,9 +8,9 @@ times.push([[17.8], [9.4, 18.8], [19.8], [10.4, 20.8, 5.2], [21.8], [11.4, 22.8]
 uia := UIA_Interface(), cond = uia.CreatePropertyCondition(30003, 50000, 3)
 
 #IfWinActive ahk_exe GuitarPro7.exe
-+`::
+Shift & SC029::
   next := false
-`::
+SC029::
   winget gp, ID, A
   buttons := uia.ElementFromHandle(gp).FindAll(cond, 0x4)
   for b in buttons {
