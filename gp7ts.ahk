@@ -34,10 +34,10 @@ SC029::
 
   ts := strsplit(times[i][j], "."), nm = ts[1], dn = ts[2]
   send ^t+{Tab 5}{Home}
-  if nm[1] <= 2
+  if substr(nm, 1, 1) = 1
     send {End}
-  send %nm%{Tab}{End}
-  if dn[1] = 3
-    send {Home}
+  send %nm%{Tab}
+  if dn = 1
+    send {End}
   send %dn%{Enter}
 return
