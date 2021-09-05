@@ -33,11 +33,12 @@ SC029::
   last := bd[i], pos = cpos, dur = "", next = true
 
   ts := strsplit(times[i][j], "."), nm = ts[1], dn = ts[2]
-  send ^t+{Tab 5}{Home}
+  send ^t
+  sendinput +{Tab 5}{Home}
   if substr(nm, 1, 1) = 1
-    send {End}
-  send %nm%{Tab}
+    sendinput {End}
+  sendinput %nm%{Tab}
   if dn = 1
-    send {End}
-  send %dn%{Enter}
+    sendinput {End}
+  sendinput %dn%{Enter}
 return
