@@ -13,19 +13,16 @@ uia := UIA_Interface(), cond = uia.CreatePropertyCondition(30003, 50000, 3)
 +SC029::
   next := false
 SC029::
-  WinGetPos,,, nW,, A
-  if (nW != W) {
-    buttons := uia.ElementFromHandle(WinExist("A")).FindAll(cond, 0x4), W = nW
-    for b in buttons {
-      if b < 10
-        continue
-      if RegExMatch(buttons[b].CurrentName, "^\d\d?\d?\.")
-        break
+  buttons := uia.ElementFromHandle(WinExist("A")).FindAll(cond, 0x4)
+  for b in buttons {
+    if b < 10
+      continue
+    if RegExMatch(buttons[b].CurrentName, "^\d\d?\d?\.") {
+      dur := strsplit(buttons[b].CurrentName, ":")[1]
+      cpos := buttons[b - 1].CurrentName
+      break
     }
   }
-
-  cpos := buttons[b - 1].CurrentName
-  dur := strsplit(buttons[b].CurrentName, ":")[1]
 
   if dur not between .125 and 128
     return
