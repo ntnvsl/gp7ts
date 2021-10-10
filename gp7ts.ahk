@@ -17,7 +17,7 @@ SC029::
   for b in buttons {
     if b < 10
       continue
-    if RegExMatch(buttons[b].CurrentName, "^\d\d?\d?\.") {
+    if buttons[b].CurrentName ~= "^\d\d?\d?\." {
       dur := strsplit(buttons[b].CurrentName, ":")[1]
       cpos := buttons[b - 1].CurrentName
       break
@@ -36,11 +36,11 @@ SC029::
 
   ts := strsplit(times[i][j], "."), nm = ts[1], dn = ts[2]
   sendevent ^t
-  send +{Tab 5}{Home}
-  if substr(nm, 1, 1) = 1
-    send {End}
-  send %nm%{Tab}
+  send +{Tab 4}
   if dn = 1
     send {End}
-  send %dn%{Enter}
+  send %dn%+{Tab}{Home}
+  if substr(nm, 1, 1) = 1
+    send {End}
+  send %nm%{Enter}
 return
