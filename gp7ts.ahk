@@ -36,4 +36,4 @@ SC029::
     $7 := false
   }
   else
-    sendinput % "^ets{Enter}" ts[1] "/" ts[2] "{Enter}"
+    sendinput % "^e" ts[1] "/" ts[2] "{Enter}"
